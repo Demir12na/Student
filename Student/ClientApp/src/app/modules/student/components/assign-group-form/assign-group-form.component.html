@@ -1,0 +1,32 @@
+<header>
+    <div class="p-5 text-center bg-light">
+        <button class="btn btn-primary buttonStyle" (click)="returnBack()">Back</button>
+        <h1 class="mb-3">Assign group</h1>
+
+    </div>
+</header>
+
+<div class="assignGroupFormGroup" [formGroup]="assignGroupFormGroup" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                <label for="groups">Group: </label>
+                <select class="form-control" formControlName="groups">
+                    <option value="groupName" selected></option>
+                    <option *ngFor="let item of groups" [ngValue]="item">
+                        {{item.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center">
+    <button type="submit" [disabled]="!assignGroupFormGroup.valid" class="btn btn-default buttonStyle float-right"
+        (click)="onSubmit()">Submit</button>
+</div>
+
+<div *ngIf="showBox" id="box" class="savedDeletedBox">
+    <p class="savedDeletedMessage"> {{ 'Changes are successfully saved!' }}</p>
+</div>

@@ -1,0 +1,23 @@
+.addNewStudent {
+    float: right;
+    background-color: #e6e6e6;
+    border: none;
+}
+
+.addNewStudent:active {     
+    background-color: #e6e6e6 !important;
+    color: #000000 !important;  
+}
+
+.iconStyle {
+    margin-left: 10px;
+
+}
+
+.filters {
+    display: flex;
+    width: 90%;
+    margin: auto;
+
+    margin-top: 10px;
+}

@@ -1,0 +1,35 @@
+<header>
+    <div class="p-5 text-center bg-light">
+      <h1 class="mb-3">Student list</h1>
+      <button class="btn btn-primary float-right" [routerLink]="'/student/create'">Create</button>
+    </div>
+  </header>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">E-mail address</th>
+        <th scope="col">Group</th>
+        <th scope="col">Department</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{ student.firstName }}</td>
+        <td>{{ student.lastName }}</td>
+        <td>{{ student.emailAddress }}</td>
+        <td>{{ student.groupName }}</td>
+        <td>{{ student.departmentName }}</td>
+        <td>
+          <button type="button" class="btn btn-primary float-right"  [routerLink]="['/student/assign-group', student.id]">Assign</button>
+          <button type="button" class="btn btn-primary float-right" [routerLink]="['/student/update', student.id]">Update</button>
+          <button type="button" class="btn btn-danger float-right" (click)="delete(student.id)">Delete</button>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>

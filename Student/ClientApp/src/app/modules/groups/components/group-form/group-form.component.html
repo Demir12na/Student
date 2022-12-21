@@ -1,0 +1,39 @@
+<header>
+    <div class="p-5 text-center bg-light">
+        <button class="btn btn-primary buttonStyle" (click)="returnBack()">Back</button>
+        <h1 *ngIf="!this.groupId" class="mb-3">Add new Group</h1>
+        <h1 *ngIf="this.groupId" class="mb-3">Edit existing Group</h1>
+
+    </div>
+</header>
+
+<div class="newGroupFormGroup" [formGroup]="newGroupFormGroup" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                <label for="name">Name: </label>
+                <input id="name" type="text" formControlName="name" class="form-control" required />
+            </div>
+        </div>
+        
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                <label for="departments">Department: </label>
+                <select class="form-control" formControlName="departments">
+                    <option value="" selected>{{'Select department'}}</option>
+                    <option *ngFor="let department of departments" [ngValue]="department">
+                        {{department.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+</div>
+
+<div class="d-flex justify-content-center">
+    <button type="submit" [disabled]="!newGroupFormGroup.valid" class="btn btn-default buttonStyle float-right"
+        (click)="onSubmit()">Submit</button>
+</div>
+
+<div *ngIf="showBox" id="box" class="savedDeletedBox">
+    <p class="savedDeletedMessage"> {{ 'Changes are successfully saved!' }}</p>
+</div>
